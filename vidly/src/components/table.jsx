@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 class Table extends Component {
-  state = {
-    movies: this.props.movies,
-    handleOnclick: this.props.handleDelete,
-  }
+  state = {}
   render() {
+    const movies = this.props.movies
     return (
       <table className="table">
         <thead>
@@ -17,7 +15,7 @@ class Table extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.movies.map((movie) => (
+          {movies.map((movie) => (
             <tr key={movie._id}>
               <td className="">{movie.title}</td>
               <td className="">{movie.genre.name}</td>
@@ -25,7 +23,7 @@ class Table extends Component {
               <td className="">{movie.dailyRentalRate}</td>
               <td>
                 <button
-                  onClick={() => this.state.handleOnclick(movie)}
+                  onClick={() => this.props.handleDelete(movie)}
                   className="btn btn-danger btn-sm"
                 >
                   Delete
