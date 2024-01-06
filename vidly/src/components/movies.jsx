@@ -10,13 +10,12 @@ class Movies extends Component {
     this.setState({ movies })
   }
   render() {
+    const movies = this.state.movies
+    if (movies.length == 0) return <p>There is no movies in the database</p>
     return (
       <div>
-        <h1>There are {this.state.movies.length} movies</h1>
-        <Table
-          movies={this.state.movies}
-          handleDelete={this.handleDeleteMovie}
-        />
+        <h1> Showing {movies.length} movies in the database.</h1>
+        <Table movies={movies} handleDelete={this.handleDeleteMovie} />
       </div>
     )
   }
